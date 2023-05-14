@@ -1,0 +1,298 @@
+{
+  "Can you check if your microphone is on, please?": {
+    "ru": "Пожалуйста, проверьте, что микрофон включен",
+    "en": "Can you check if your microphone is on, please?"
+  },
+  "What did you say again?": {
+    "ru": "Что-что? Еще раз",
+    "en": "What did you say again?"
+  },
+  "Seems like we have a trouble. See logs for more information": {
+    "ru": "Что-то пошло не так. Посмотрите логи",
+    "en": "Seems like we have a trouble. See logs for more information"
+  },
+  "Hello, {}! How can I help you today?": {
+    "ru": "Привет, {}! Чем могу помочь?",
+    "en": "Hello, {}! How can I help you today?"
+  },
+  "Good day to you {}! How can I help you today?": {
+    "ru": "Здравствуй, {}! Какой план на сегодня?",
+    "en": "Good day to you {}! How can I help you today?"
+  },
+  "Goodbye, {}! Have a nice day!": {
+    "ru": "До связи, {}! Хорошего тебе дня!",
+    "en": "Goodbye, {}! Have a nice day!"
+  },
+  "See you soon, {}!": {
+    "ru": "До скорого, {}!",
+    "en": "See you soon, {}!"
+  },
+  "Here is what I found for {} on google": {
+    "ru": "Вот, что мне удалось найти по запросу {} в Гугл",
+    "en": "Here is what I found for {} on google"
+  },
+  "Here is what I found for {} on youtube": {
+    "ru": "Вот, что мне удалось найти по запросу {} на Ютьюб",
+    "en": "Here is what I found for {} on youtube"
+  },
+  "Here is what I found for {} on Wikipedia": {
+    "ru": "Вот, что мне удалось найти по запросу {} в Википедии",
+    "en": "Here is what I found for {} on Wikipedia"
+  },
+  "Can't find {} on Wikipedia. But here is what I found on google": {
+    "ru": "Не могу найти в Википедии ничего по запросу {}. Но вот, что мне удалось найти в Гугл",
+    "en": "Can't find {} on Wikipedia. But here is what I found on google"
+  },
+  "It is {0} in {1}": {
+    "ru": "Сейчас {0} в городе {1}",
+    "en": "It is {0} in {1}"
+  },
+  "The temperature is {} degrees Celsius": {
+    "ru": "Температура {} градусов Цельсия",
+    "en": "The temperature is {} degrees Celsius"
+  },
+  "The wind speed is {} meters per second": {
+    "ru": "Скорость ветра {} метров в секунду",
+    "en": "The wind speed is {} meters per second"
+  },
+  "The pressure is {} mm Hg": {
+    "ru": "Давление {} миллиметров ртутного столба",
+    "en": "The pressure is {} mm Hg"
+  },
+  "Here is what I found for {} on social nets": {
+    "ru": "Вот, что мне удалось найти по запросу {} в социальных сетях",
+    "en": "Here is what I found for {} on social nets"
+  },
+  "won": {
+    "ru": "победили",
+    "en": "won"
+  },
+  "Tails": {
+    "ru": "Решки",
+    "en": "Tails"
+  },
+  "Heads": {
+    "ru": "Орлы",
+    "en": "Heads"
+  },
+  "Can you repeat, please?": {
+    "ru": "Можете повторить, пожалуйста?",
+    "en": "Can you repeat, please?"
+  },
+  "Repeat, please": {
+    "ru": "Повторите, пожалуйста",
+    "en": "Repeat, please"
+  },
+  "I don't understand you": {
+    "ru": "Не понимаю",
+    "en": "I don't understand you"
+  },
+  "Hello, {}! What are we going to do today?": {
+    "ru": "Привет, {}! Чем займёмся сегодня?",
+    "en": "Hello, {}! What are we going to do today?"
+  },
+  "Bye-bye!": {
+    "ru": "Пока-пока!",
+    "en": "Bye-bye!"
+  },
+  "The time is {}": {
+    "ru": "Сейчас {}",
+    "en": "The time is {}"
+  },
+  "Current time is {}": {
+    "ru": "Текущее время {}",
+    "en": "Current time is {}"
+  },
+  "It is {} on the clock": {
+    "ru": "На часах {}",
+    "en": "It is {} on the clock"
+  },
+  "I'm doing great, thank you for asking": {
+    "ru": "У меня всё отлично, спасибо, что спросили",
+    "en": "I'm doing great, thank you for asking"
+  },
+  "Great mood on such a beautiful day!": {
+    "ru": "Прекрасное настроение в столь прекрасный день!",
+    "en": "Great mood on such a beautiful day!"
+  },
+  "Everything is all right!": {
+    "ru": "Всё супер!",
+    "en": "Everything is all right!"
+  },
+  "Everything was fine, but I heard you and it got even better!": {
+    "ru": "Всё было хорошо, но вот услышала вас и стало еще лучше!",
+    "en": "Everything was fine, but I heard you and it got even better!"
+  },
+  "Everything is fine, but if you paid me for my work, it would be even better": {
+    "ru": "Всё хорошо, но если бы вы мне платили за работу, было бы еще лучше",
+    "en": "Everything is fine, but if you paid me for my work, it would be even better"
+  },
+  "So far, it's fine...": {
+    "ru": "Пока нормально...",
+    "en": "So far, it's fine..."
+  },
+  "Will it affect your request in any way?": {
+    "ru": "А это как-то повлияет на ваш запрос?",
+    "en": "Will it affect your request in any way?"
+  },
+  "Give me a case and we'll find out": {
+    "ru": "А вы дайте мне дел и узнаем",
+    "en": "Give me a case and we'll find out"
+  },
+  "There's a lot to do... Let's get started": {
+    "ru": "Дел много... Давайте начнём",
+    "en": "There's a lot to do... Let's get started"
+  },
+  "Division by zero!": {
+    "ru": "Деление на ноль!",
+    "en": "Division by zero!"
+  },
+  "Say, for example: Count 5+5": {
+    "ru": "Скажи, например: Посчитай 5+5",
+    "en": "Say, for example: Count 5+5"
+  },
+  "Make a two-digit number from 10 to 19. Subtract 9. Add 11. Close your eyes. It's dark, isn't it?": {
+    "ru": "Загадайте двухзначное число от десяти до девятнадцати. Отнимите 9. Прибавьте 11. Закройте глаза. Темно. Правда?",
+    "en": "Make a two-digit number from 10 to 19. Subtract 9. Add 11. Close your eyes. It's dark, isn't it?"
+  },
+  "'I'm going to bed early today' from the creators of 'Tomorrow I will start going to the gym'.": {
+    "ru": "'Сегодня лягу пораньше'. От создателей. 'Завтра начну ходить в зал'.",
+    "en": "'I'm going to bed early today' from the creators of 'Tomorrow I will start going to the gym'."
+  },
+  "The programmer decided to borrow 1000 rubles from a friend, but to make it equal, he took 1024.": {
+    "ru": "Программист решил занять у друга 1000 рублей, но для ровного счёта занял 1024.",
+    "en": "The programmer decided to borrow 1000 rubles from a friend, but to make it equal, he took 1024."
+  },
+  "Scientists have found that nothing is clear to the hedgehog.": {
+    "ru": "Учёные обнаружили, что ежу ничего не понятно.",
+    "en": "Scientists have found that nothing is clear to the hedgehog."
+  },
+  "I was asked to make a contribution for a new pool. I had to give them a glass of water.": {
+    "ru": "Меня попросили сделать взнос на новый бассейн. Пришлось дать им стакан воды.",
+    "en": "I was asked to make a contribution for a new pool. I had to give them a glass of water."
+  },
+  "The hourglass struck midnight": {
+    "ru": "Песочные часы пробили полночь",
+    "en": "The hourglass struck midnight"
+  },
+  "First snake: I hope I’m not poisonous. Second snake: Why? First snake: Because I bit my lip!": {
+    "ru": "Первая змея: Я надеюсь, что я не ядовитая. Вторая змея: Почему? Первая змея: Я прикусила язык...",
+    "en": "First snake: I hope I’m not poisonous. Second snake: Why? First snake: Because I bit my lip!"
+  },
+  "Don't be angry with the lazy ones. They didn't do anything.": {
+    "ru": "Не сердитесь на лентяев. Они же ничего не сделали.",
+    "en": "Don't be angry with the lazy ones. They didn't do anything."
+  },
+  "How to make light with water? Wash the windows": {
+    "ru": "Как сделать свет при помощи воды? Помыть окна",
+    "en": "How to make light with water? Wash the windows"
+  },
+  "The brown bear asks the white one: Tell me, what kind of soap do you use?": {
+    "ru": "Бурый медведь спрашивает у белого: Скажите, а каким мылом вы пользуетесь?",
+    "en": "The brown bear asks the white one: Tell me, what kind of soap do you use?"
+  },
+  "Which hand is better to stir the tea with? It is better to stir the tea with a spoon.": {
+    "ru": "Какой рукой лучше размешивать чай? Чай лучше размешивать ложкой.",
+    "en": "Which hand is better to stir the tea with? It is better to stir the tea with a spoon."
+  },
+  "Scientists have found that cats adhere to the principle of 'eating tired sleeping'. During the day, they just put a comma in different places.": {
+    "ru": "Учёные обнаружили, что коты придерживаются принципа 'есть надоело спать'. В течение дня они просто ставят запятую в разных местах.",
+    "en": "Scientists have found that cats adhere to the principle of 'eating tired sleeping'. During the day, they just put a comma in different places."
+  },
+  "- What is your dog's name? - I don't know, she won't admit it": {
+    "ru": "- Как зовут вашу собаку? - Я не знаю, она не признаётся",
+    "en": "- What is your dog's name? - I don't know, she won't admit it"
+  },
+  "The stopwatch is running": {
+    "ru": "Секундомер запущен",
+    "en": "The stopwatch is running"
+  },
+  "The stopwatch is off": {
+    "ru": "Секундомер выключен",
+    "en": "The stopwatch is off"
+  },
+  "I can tell you about the weather in your city; search for any of your queries in Google, YouTube or Wikipedia; find a person on social networks; help with the translation of a word or phrase into another language; flip a coin to make a difficult decision; tell the time; be a simple calculator; mark the time, and even cheer up, telling hilarious jokes.": {
+    "ru": "Я могу подсказать, какая погода за окном; выполнить поиск по любому вашему запросу в гугле, ютубе или википедии; найти человека в социальных сетях; помочь с переводом слова или фразы на другой язык; подбросить монетку для принятия сложного решения; подсказать время; выступать в роли простого калькулятора; засекать время, и даже поднимать настроение своими уморительными шутками.",
+    "en": "I can tell you about the weather in your city; search for any of your queries in Google, YouTube or Wikipedia; find a person on social networks; help with the translation of a word or phrase into another language; flip a coin to make a difficult decision; tell the time; be a simple calculator; mark the time, and even cheer up, telling hilarious jokes."
+  },
+  "• weather forecast ('weather forecast'/'weather')": {
+    "ru": "• прогноз погоды ('прогноз погоды'/'озвуч погоду')",
+    "en": "• weather forecast ('weather forecast'/'weather')"
+  },
+  "• search on Google, YouTube or Wikipedia ('google'/'find video'/'find definition')": {
+    "ru": "• поиск в Google, YouTube или Wikipedia ('загугли'/'найди видео'/'найди определение')",
+    "en": "• search on Google, YouTube or Wikipedia ('google'/'find video'/'find definition')"
+  },
+  "• run person through social nets databases ('find person')": {
+    "ru": "• поиск человека в социальных сетях ('найди человека')",
+    "en": "• run person through social nets databases ('find person')"
+  },
+  "• translation into another language ('translate'/'find translation')": {
+    "ru": "• перевод на другой язык ('переведи'/'выполни перевод')",
+    "en": "• translation into another language ('translate'/'find translation')"
+  },
+  "• toss coin ('toss/flip coin')": {
+    "ru": "• подбрасывание монетки ('подбрось/подкинь монетку')",
+    "en": "• toss coin ('toss/flip coin')"
+  },
+  "• current time ('what time'/'current time')": {
+    "ru": "• текущее время ('который час'/'сколько времени')",
+    "en": "• current time ('what time'/'current time')"
+  },
+  "• calculator ('count'/'calculate')": {
+    "ru": "• калькулятор ('посчитай'/'вычисли')",
+    "en": "• calculator ('count'/'calculate')"
+  },
+  "• stopwatch ('stopwatch start'/'stopwatch stop')": {
+    "ru": "• секундомер ('секундомер старт'/'секундомер стоп')",
+    "en": "• stopwatch ('stopwatch start'/'stopwatch stop')"
+  },
+  "• jokes ('joke'/'anecdote')": {
+    "ru": "• анекдоты ('пошути'/'расскажи анекдот')",
+    "en": "• jokes ('joke'/'anecdote')"
+  },
+  "{} welcomes you!": {
+    "ru": "{} приветствует вас!",
+    "en": "{} welcomes you!"
+  },
+  "{} says goodbye to you!": {
+    "ru": "{} прощается с вами!",
+    "en": "{} says goodbye to you!"
+  },
+  "Hello, {}! I am {}. Your voice assistant. How can I help you?": {
+    "ru": "Здравствуйте, {}! Я {}. Ваш голосовой помощник. Чем могу помочь?",
+    "en": "Hello, {}! I am {}. Your voice assistant. How can I help you?"
+  },
+  "Hello, {}! Did you want something?": {
+    "ru": "Здравствуйте, {}! Вы что-то хотели?",
+    "en": "Hello, {}! Did you want something?"
+  },
+  "See you, {}. Have a nice day!": {
+    "ru": "Увидимся, {}. Приятного вам дня!",
+    "en": "See you, {}. Have a nice day!"
+  },
+  "I hope I was able to help you, goodbye!": {
+    "ru": "Надеюсь, я смогла вам помочь, до свидания!",
+    "en": "I hope I was able to help you, goodbye!"
+  },
+  "": {
+    "ru": "",
+    "en": " "
+  },
+  "": {
+    "ru": "",
+    "en": " "
+  },
+  "": {
+    "ru": "",
+    "en": " "
+  },
+  "": {
+    "ru": "",
+    "en": " "
+  },
+  "": {
+    "ru": "",
+    "en": " "
+  }
+}
