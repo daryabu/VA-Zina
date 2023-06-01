@@ -44,7 +44,7 @@ class Translation:
             return text
 
 
-class OwnerPerson:
+class Owner:
     """
     Информация о владельце, включающие имя, город проживания, родной язык речи, изучаемый язык (для переводов текста)
     """
@@ -104,7 +104,7 @@ def record_and_recognize_audio(*args: tuple):
                 file.write(audio.get_wav_data())
 
         except speech_recognition.WaitTimeoutError:
-            play_voice_assistant_speech(translator.get("Can you check if your microphone is on, please?"))
+            play_va_speech(translator.get("Can you check if your microphone is on, please?"))
             traceback.print_exc()
             return
 
@@ -113,18 +113,15 @@ def record_and_recognize_audio(*args: tuple):
             print("Started recognition...")
             recognized_data = recognizer.recognize_google(audio, language=assistant.recognition_language).lower()
 
-        except speech_recognition.UnknownValueError:
-            pass  # play_voice_assistant_speech("What did you say again?")
-
         # в случае проблем с доступом в Интернет происходит попытка использовать offline-распознавание через Vosk
         except speech_recognition.RequestError:
             print(colored("Trying to use offline recognition...", "cyan"))
-            recognized_data = use_offline_recognition()
+            recognized_data = offline_recognition()
 
         return recognized_data
 
 
-def use_offline_recognition():
+def offline_recognition():
     """
     Переключение на оффлайн-распознавание речи
     :return: распознанная фраза
@@ -158,7 +155,7 @@ def use_offline_recognition():
     return recognized_data
 
 
-def play_voice_assistant_speech(text_to_speech):
+def play_va_speech(text_to_speech):
     """
     Проигрывание речи ответов голосового ассистента (без сохранения аудио)
     :param text_to_speech: текст, который нужно преобразовать в речь
@@ -167,7 +164,7 @@ def play_voice_assistant_speech(text_to_speech):
     ttsEngine.runAndWait()
 
 
-def play_failure_phrase(*args: tuple):
+def play_fail_phrase(*args: tuple):
     """
     Проигрывание случайной фразы при неудачном распознавании
     """
@@ -177,7 +174,7 @@ def play_failure_phrase(*args: tuple):
         translator.get("Repeat, please"),
         translator.get("I don't understand you")
     ]
-    play_voice_assistant_speech(failure_phrases[random.randint(0, len(failure_phrases) - 1)])
+    play_va_speech(failure_phrases[random.randint(0, len(failure_phrases) - 1)])
 
 
 def play_greetings(*args: tuple):
@@ -192,7 +189,7 @@ def play_greetings(*args: tuple):
         translator.get("Hello, {}! I am {}. Your voice assistant. How can I help you?").format(person.name,assistant.name),
         translator.get("Hello, {}! Did you want something?").format(person.name)
     ]
-    play_voice_assistant_speech(greetings[random.randint(0, len(greetings) - 1)])
+    play_va_speech(greetings[random.randint(0, len(greetings) - 1)])
 
 
 def play_farewell_and_quit(*args: tuple):
@@ -207,7 +204,7 @@ def play_farewell_and_quit(*args: tuple):
         translator.get("See you, {}. Have a nice day!").format(person.name),
         translator.get("{} says goodbye to you!").format(assistant.name)
     ]
-    play_voice_assistant_speech(farewells[random.randint(0, len(farewells) - 1)])
+    play_va_speech(farewells[random.randint(0, len(farewells) - 1)])
     ttsEngine.stop()
     quit()
 
@@ -223,15 +220,15 @@ def tell_about_skills(*args: tuple):
     print(translator.get("• calculator ('count'/'calculate')"))
     print(translator.get("• stopwatch ('stopwatch start'/'stopwatch stop')"))
     print(translator.get("• jokes ('joke'/'anecdote')"))
-    play_voice_assistant_speech(translator.get("I can tell you about the weather in your city; "
-                                               "search for any of your queries in Google, YouTube or Wikipedia; "
-                                               "find a person on social networks; "
-                                               "help with the translation of a word or phrase into another language; "
-                                               "flip a coin to make a difficult decision; tell the time; "
-                                               "be a simple calculator; mark the time, and even cheer up, telling hilarious jokes."))
+    play_va_speech(translator.get("I can tell you about the weather in your city; "
+                                  "search for any of your queries in Google, YouTube or Wikipedia; "
+                                  "find a person on social networks; "
+                                  "help with the translation of a word or phrase into another language; "
+                                  "flip a coin to make a difficult decision; tell the time; "
+                                  "be a simple calculator; mark the time, and even cheer up, telling hilarious jokes."))
 
 
-def search_for_term_on_google(*args: tuple):
+def search_on_google(*args: tuple):
     """
     Поиск в Google с автоматическим открытием ссылок (на список результатов и на сами результаты, если возможно)
     :param args: фраза поискового запроса
@@ -259,15 +256,15 @@ def search_for_term_on_google(*args: tuple):
 
     # поскольку все ошибки предсказать сложно, то будет произведен отлов с последующим выводом без остановки программы
     except:
-        play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
+        play_va_speech(translator.get("Seems like we have a trouble. See logs for more information"))
         traceback.print_exc()
         return
 
     print(search_results)
-    play_voice_assistant_speech(translator.get("Here is what I found for {} on google").format(search_term))
+    play_va_speech(translator.get("Here is what I found for {} on google").format(search_term))
 
 
-def search_for_video_on_youtube(*args: tuple):
+def search_on_youtube(*args: tuple):
     """
     Поиск видео на YouTube с автоматическим открытием ссылки на список результатов
     :param args: фраза поискового запроса
@@ -276,10 +273,10 @@ def search_for_video_on_youtube(*args: tuple):
     search_term = " ".join(args[0])
     url = "https://www.youtube.com/results?search_query=" + search_term
     webbrowser.get().open(url)
-    play_voice_assistant_speech(translator.get("Here is what I found for {} on youtube").format(search_term))
+    play_va_speech(translator.get("Here is what I found for {} on youtube").format(search_term))
 
 
-def search_for_definition_on_wikipedia(*args: tuple):
+def search_on_wikipedia(*args: tuple):
     """
     Поиск в Wikipedia определения с последующим озвучиванием результатов и открытием ссылок
     :param args: фраза поискового запроса
@@ -295,22 +292,22 @@ def search_for_definition_on_wikipedia(*args: tuple):
     wiki_page = wiki.page(search_term)
     try:
         if wiki_page.exists():
-            play_voice_assistant_speech(translator.get("Here is what I found for {} on Wikipedia").format(search_term))
+            play_va_speech(translator.get("Here is what I found for {} on Wikipedia").format(search_term))
             webbrowser.get().open(wiki_page.fullurl)
 
             # чтение ассистентом первых двух предложений summary со страницы Wikipedia
             # (могут быть проблемы с мультиязычностью)
-            play_voice_assistant_speech(wiki_page.summary.split(".")[:2])
+            play_va_speech(wiki_page.summary.split(".")[:2])
         else:
             # открытие ссылки на поисковик в браузере в случае, если на Wikipedia не удалось найти ничего по запросу
-            play_voice_assistant_speech(translator.get(
+            play_va_speech(translator.get(
                 "Can't find {} on Wikipedia. But here is what I found on google").format(search_term))
             url = "https://google.com/search?q=" + search_term
             webbrowser.get().open(url)
 
     # поскольку все ошибки предсказать сложно, то будет произведен отлов с последующим выводом без остановки программы
     except:
-        play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
+        play_va_speech(translator.get("Seems like we have a trouble. See logs for more information"))
         traceback.print_exc()
         return
 
@@ -334,7 +331,7 @@ def get_translation(*args: tuple):
                                                              src=person.target_language,  # с какого языка
                                                              dest=person.native_language)  # на какой язык
 
-            play_voice_assistant_speech("The translation for {} in Russian is".format(search_term))
+            play_va_speech("The translation for {} in Russian is".format(search_term))
 
             # смена голоса ассистента на родной язык пользователя (чтобы можно было произнести перевод)
             assistant.speech_language = person.native_language
@@ -345,18 +342,18 @@ def get_translation(*args: tuple):
             translation_result = google_translator.translate(search_term,  # что перевести
                                                              src=person.native_language,  # с какого языка
                                                              dest=person.target_language)  # на какой язык
-            play_voice_assistant_speech("По-английски {} будет как".format(search_term))
+            play_va_speech("По-английски {} будет как".format(search_term))
 
             # смена голоса ассистента на изучаемый язык пользователя (чтобы можно было произнести перевод)
             assistant.speech_language = person.target_language
             setup_assistant_voice()
 
         # произнесение перевода
-        play_voice_assistant_speech(translation_result.text)
+        play_va_speech(translation_result.text)
 
     # поскольку все ошибки предсказать сложно, то будет произведен отлов с последующим выводом без остановки программы
     except:
-        play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
+        play_va_speech(translator.get("Seems like we have a trouble. See logs for more information"))
         traceback.print_exc()
 
     finally:
@@ -365,7 +362,7 @@ def get_translation(*args: tuple):
         setup_assistant_voice()
 
 
-def get_weather_forecast(*args: tuple):
+def weather_forecast(*args: tuple):
     """
     Получение и озвучивание прогноза погоды
     :param args: город, по которому должен выполняться запос
@@ -392,7 +389,7 @@ def get_weather_forecast(*args: tuple):
 
     # поскольку все ошибки предсказать сложно, то будет произведен отлов с последующим выводом без остановки программы
     except:
-        play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
+        play_va_speech(translator.get("Seems like we have a trouble. See logs for more information"))
         traceback.print_exc()
         return
 
@@ -410,10 +407,10 @@ def get_weather_forecast(*args: tuple):
                   "\n * Pressure (mm Hg): " + str(pressure), "yellow"))
 
     # озвучивание текущего состояния погоды ассистентом (здесь для мультиязычности требуется дополнительная работа)
-    play_voice_assistant_speech(translator.get("It is {0} in {1}").format(status, city_name))
-    play_voice_assistant_speech(translator.get("The temperature is {} degrees Celsius").format(str(temperature)))
-    play_voice_assistant_speech(translator.get("The wind speed is {} meters per second").format(str(wind_speed)))
-    play_voice_assistant_speech(translator.get("The pressure is {} mm Hg").format(str(pressure)))
+    play_va_speech(translator.get("It is {0} in {1}").format(status, city_name))
+    play_va_speech(translator.get("The temperature is {} degrees Celsius").format(str(temperature)))
+    play_va_speech(translator.get("The wind speed is {} meters per second").format(str(wind_speed)))
+    play_va_speech(translator.get("The pressure is {} mm Hg").format(str(pressure)))
 
 
 def change_language(*args: tuple):
@@ -423,28 +420,6 @@ def change_language(*args: tuple):
     assistant.speech_language = "ru" if assistant.speech_language == "en" else "en"
     setup_assistant_voice()
     print(colored("Language switched to " + assistant.speech_language, "cyan"))
-
-
-def run_person_through_social_nets_databases(*args: tuple):
-    """
-    Поиск человека по базе данных социальной сети ВКонтакте
-    :param args: имя, фамилия
-    """
-    if not args[0]: return
-
-    google_search_term = " ".join(args[0])
-    vk_search_term = "_".join(args[0])
-    fb_search_term = "-".join(args[0])
-
-    # открытие ссылки на поисковик в браузере
-    url = "https://google.com/search?q=" + google_search_term + " site: vk.com"
-    webbrowser.get().open(url)
-
-    # открытие ссылки на поисковик социальной сети в браузере
-    vk_url = "https://vk.com/people/" + vk_search_term
-    webbrowser.get().open(vk_url)
-
-    play_voice_assistant_speech(translator.get("Here is what I found for {} on social nets").format(google_search_term))
 
 
 def toss_coin(*args: tuple):
@@ -459,7 +434,7 @@ def toss_coin(*args: tuple):
 
     tails = flips_count - heads
     winner = "Tails" if tails > heads else "Heads"
-    play_voice_assistant_speech(translator.get(winner) + " " + translator.get("won"))
+    play_va_speech(translator.get(winner) + " " + translator.get("won"))
 
 
 def get_time(*args: tuple):
@@ -471,7 +446,7 @@ def get_time(*args: tuple):
         translator.get("Current time is {}").format(strtime),
         translator.get("It is {} on the clock").format(strtime)
     ]
-    play_voice_assistant_speech(nowtime[random.randint(0, len(nowtime) - 1)])
+    play_va_speech(nowtime[random.randint(0, len(nowtime) - 1)])
 
 
 def tell_mood(*args: tuple):
@@ -487,7 +462,7 @@ def tell_mood(*args: tuple):
         translator.get("Give me a case and we'll find out"),
         translator.get("Great mood on such a beautiful day!")
     ]
-    play_voice_assistant_speech(moods[random.randint(0, len(moods) - 1)])
+    play_va_speech(moods[random.randint(0, len(moods) - 1)])
 
 
 def calculate(*args: tuple):
@@ -513,12 +488,13 @@ def calculate(*args: tuple):
             if num_2 != 0:
                 ans = num_1 / num_2
             else:
-                play_voice_assistant_speech(translator.get("Division by zero!"))
+                play_va_speech(translator.get("Division by zero!"))
         elif "степен" in oper:
             ans = num_1 ** num_2
-        play_voice_assistant_speech("{0} {1} {2} = {3}".format(list_of_nums[-3], list_of_nums[-2], list_of_nums[-1], round(ans,2)))
+        print("{0} {1} {2} = {3}".format(list_of_nums[-3], list_of_nums[-2], list_of_nums[-1], round(ans, 2)))
+        play_va_speech("{0} {1} {2} = {3}".format(list_of_nums[-3], list_of_nums[-2], list_of_nums[-1], round(ans, 2)))
     except:
-        play_voice_assistant_speech(translator.get("Say, for example: Count 5+5"))
+        play_va_speech(translator.get("Say, for example: Count 5+5"))
 
 
 def tell_joke(*args: tuple):
@@ -538,7 +514,7 @@ def tell_joke(*args: tuple):
         translator.get("Scientists have found that cats adhere to the principle of 'eating tired sleeping'. During the day, they just put a comma in different places."),
         translator.get("- What is your dog's name? - I don't know, she won't admit it")
     ]
-    play_voice_assistant_speech(jokes[random.randint(0, len(jokes) - 1)])
+    play_va_speech(jokes[random.randint(0, len(jokes) - 1)])
 
 
 def start_stopwatch(*args: tuple):
@@ -547,18 +523,19 @@ def start_stopwatch(*args: tuple):
 
     if "запус" in str(args[0]) or "старт" in str(args[0])or "start" in str(args[0]):
         start_time = time.time()
-        play_voice_assistant_speech(translator.get("The stopwatch is running"))
+        play_va_speech(translator.get("The stopwatch is running"))
 
     elif "остан" in str(args[0]) or "стоп" in str(args[0])or "stop" in str(args[0]):
         if start_time != 0:
             ttime = time.time() - start_time
 
             print("Прошло {0} часов {1} минут {2} секунд".format(round(ttime // 3600), round(ttime // 60), round(ttime % 60, 2)))
-            play_voice_assistant_speech("Прошло {0} часов {1} минут {2} секунд".format(round(ttime // 3600), round(ttime // 60), round(ttime % 60, 2)))
+            play_va_speech("Прошло {0} часов {1} минут {2} секунд".format(round(ttime // 3600), round(ttime // 60),
+                                                                          round(ttime % 60, 2)))
 
             start_time = 0
         else:
-            play_voice_assistant_speech(translator.get("The stopwatch is off"))
+            play_va_speech(translator.get("The stopwatch is off"))
 
 
 # перечень команд для использования в виде JSON-объекта
@@ -577,27 +554,22 @@ config = {
         "google_search": {
             "examples": ["найди в гугле", "загугли", "поищи в гугле", "гугл",
                          "search on google", "google", "find on google"],
-            "responses": search_for_term_on_google
+            "responses": search_on_google
         },
         "youtube_search": {
             "examples": ["найди видео", "покажи видео", "включи видео", "видео",
                          "find video", "find on youtube", "search on youtube", "video"],
-            "responses": search_for_video_on_youtube
+            "responses": search_on_youtube
         },
         "wikipedia_search": {
             "examples": ["найди определение", "найди на википедии", "что такое", "поведай о",
                          "find on wikipedia", "find definition", "narrate about", "what is"],
-            "responses": search_for_definition_on_wikipedia
-        },
-        "person_search": {
-            "examples": ["пробей имя", "найди человека", "поищи человека",
-                         "find person", "run person", "search for person"],
-            "responses": run_person_through_social_nets_databases
+            "responses": search_on_wikipedia
         },
         "weather_forecast": {
             "examples": ["прогноз погоды", "погода", "температура", "прогноз",
                          "weather forecast", "report weather", "forecast", "weather"],
-            "responses": get_weather_forecast
+            "responses": weather_forecast
         },
         "translation": {
             "examples": ["выполни перевод", "переведи", "скажи по-другому", "перевод",
@@ -630,7 +602,7 @@ config = {
             "responses": calculate
         },
         "joke": {
-            "examples": ["пошути", "расскажи шутку", "расскажи анекдот", "анекдот",
+            "examples": ["пошути", "шутку", "развесели", "анекдот",
                          "joke", "tell a joke", "I'm sad", "anecdote"],
             "responses": tell_joke
         },
@@ -646,7 +618,7 @@ config = {
         }
     },
 
-    "failure_phrases": play_failure_phrase
+    "failure_phrases": play_fail_phrase
 }
 
 
@@ -661,9 +633,14 @@ def prepare_corpus():
             corpus.append(example)
             target_vector.append(intent_name)
 
+    print(colored(corpus, "red"))
+    print(colored(target_vector, "yellow"))
+
     training_vector = vectorizer.fit_transform(corpus)
     classifier_probability.fit(training_vector, target_vector)
     classifier.fit(training_vector, target_vector)
+
+    print(colored(training_vector, "blue"))
 
 
 def get_intent(request):
@@ -673,9 +650,15 @@ def get_intent(request):
     :return: наиболее вероятное намерение
     """
     best_intent = classifier.predict(vectorizer.transform([request]))[0]
+    mb = vectorizer.transform([request])
+    print(colored(mb, "yellow"))
+    print(colored(best_intent, "cyan"))
 
     index_of_best_intent = list(classifier_probability.classes_).index(best_intent)
+    print(index_of_best_intent)
+
     probabilities = classifier_probability.predict_proba(vectorizer.transform([request]))[0]
+    print(colored(probabilities, "green", attrs=["underline"]))
 
     best_intent_probability = probabilities[index_of_best_intent]
 
@@ -685,7 +668,7 @@ def get_intent(request):
         return best_intent
 
 
-def make_preparations():
+def preparations():
     """
     Подготовка глобальных переменных к запуску приложения
     """
@@ -699,7 +682,7 @@ def make_preparations():
     ttsEngine = pyttsx3.init()
 
     # настройка данных пользователя
-    person = OwnerPerson()
+    person = Owner()
     person.name = "Dasha"
     person.home_city = "Novosibirsk"
     person.native_language = "ru"
@@ -721,14 +704,14 @@ def make_preparations():
     load_dotenv()
 
     # подготовка корпуса для распознавания запросов пользователя с некоторой вероятностью (поиск похожих)
-    vectorizer = TfidfVectorizer(analyzer="char", ngram_range=(2, 3))
+    vectorizer = TfidfVectorizer(analyzer="word", ngram_range=(1, 2))
     classifier_probability = LogisticRegression()
     classifier = LinearSVC()
     prepare_corpus()
 
 
 if __name__ == "__main__":
-    make_preparations()
+    preparations()
 
     while True:
         # старт записи речи с последующим выводом распознанной речи и удалением записанного в микрофон аудио
